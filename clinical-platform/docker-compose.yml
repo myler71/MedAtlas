@@ -28,5 +28,30 @@ services:
       timeout: 5s
       retries: 5
 
+  express:
+    build: ./backend/express
+    ports:
+      - "3000:3000"
+    environment:
+      DATABASE_URL: postgresql://clinical:clinical@postgres:5432/clinical_platform
+      REDIS_URL: redis://redis:6379
+      JWT_SECRET: ${JWT_SECRET:-dev-secret}
+      FASTAPI_INTERNAL_URL: http://fastapi:8000
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
+  fastapi:
+    build: ./backend/fastapi
+    ports:
+      - "8000:8000"
+    environment:
+      DATABASE_URL: postgresql://clinical:clinical@postgres:5432/clinical_platform
+    depends_on:
+      postgres:
+        condition: service_healthy
+
 volumes:
   postgres_data:

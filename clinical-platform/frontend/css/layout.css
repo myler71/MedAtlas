@@ -1,0 +1,12 @@
+/* css/layout.css */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: var(--font); background: var(--color-bg); color: var(--color-text); min-height: 100vh; }
+#app { max-width: 1200px; margin: 0 auto; padding: var(--spacing-lg); }
+.card { background: var(--color-surface); border-radius: var(--radius); box-shadow: var(--shadow); padding: var(--spacing-lg); }
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: var(--spacing-lg); }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--spacing-lg); }
+.flex { display: flex; }
+.flex-col { flex-direction: column; }
+.gap-sm { gap: var(--spacing-sm); }
+.gap-md { gap: var(--spacing-md); }
+.gap-lg { gap: var(--spacing-lg); }
