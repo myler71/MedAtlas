@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from .api import patients
+from .api import patients, dental, orthopedic
 
 app = FastAPI(title="Clinical Platform API", version="1.0.0")
 
@@ -13,6 +13,8 @@ app.add_middleware(
 )
 
 app.include_router(patients.router)
+app.include_router(dental.router)
+app.include_router(orthopedic.router)
 
 @app.get("/api/health")
 def health():
