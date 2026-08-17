@@ -1,0 +1,69 @@
+/* css/skeleton.css */
+.skeleton-container {
+  display: flex;
+  justify-content: center;
+  padding: var(--spacing-lg);
+}
+
+.skeleton-svg-container {
+  position: relative;
+}
+
+.skeleton-svg-container .bone-region {
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.skeleton-svg-container .bone-region:hover {
+  stroke: var(--color-primary);
+  stroke-width: 2;
+}
+
+.skeleton-state-normal { fill: #ffffff; stroke: #0f172a; stroke-width: 1; }
+.skeleton-state-fracture { fill: #fca5a5; stroke: #991b1b; stroke-width: 2; }
+.skeleton-state-under_treatment { fill: #fed7aa; stroke: #c2410c; stroke-width: 1.5; }
+.skeleton-state-follow_up { fill: #fde68a; stroke: #b45309; stroke-width: 1.5; }
+.skeleton-state-healing { fill: #bbf7d0; stroke: #15803d; stroke-width: 1.5; }
+.skeleton-state-surgical { fill: #c4b5fd; stroke: #5b21b6; stroke-width: 1.5; }
+.skeleton-state-chronic { fill: #e9d5ff; stroke: #6b21a8; stroke-width: 1.5; }
+.skeleton-state-treated { fill: #e0f2fe; stroke: #075985; stroke-width: 1; }
+
+.skeleton-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-lg);
+  padding: var(--spacing-md);
+  background: var(--color-bg);
+  border-radius: var(--radius);
+}
+
+.skeleton-legend-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  font-size: 12px;
+}
+
+.skeleton-legend-swatch {
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  border: 1px solid var(--color-border);
+}
+
+.bone-detail-panel {
+  position: fixed;
+  right: 0;
+  top: 0;
+  height: 100vh;
+  width: 400px;
+  background: var(--color-surface);
+  box-shadow: var(--shadow-lg);
+  padding: var(--spacing-lg);
+  overflow-y: auto;
+  transform: translateX(100%);
+  transition: transform 0.2s;
+}
+
+.bone-detail-panel.open { transform: translateX(0); }

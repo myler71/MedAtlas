@@ -1,0 +1,65 @@
+/* css/dental.css */
+.odontogram-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-lg);
+  padding: var(--spacing-md);
+}
+
+.odontogram-row {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-xs);
+}
+
+.tooth-svg {
+  cursor: pointer;
+  transition: transform 0.1s;
+}
+
+.tooth-svg:hover {
+  transform: scale(1.1);
+}
+
+.tooth-state-healthy { fill: #ffffff; stroke: #0f172a; stroke-width: 1.5; }
+.tooth-state-caries { fill: #fbbf24; stroke: #92400e; stroke-width: 1.5; }
+.tooth-state-restored { fill: #93c5fd; stroke: #1e40af; stroke-width: 1.5; }
+.tooth-state-missing { fill: #94a3b8; stroke: #475569; stroke-width: 1.5; opacity: 0.5; }
+.tooth-state-extracted { fill: #1e293b; stroke: #0f172a; stroke-width: 1.5; }
+.tooth-state-root_canal { fill: #fda4af; stroke: #be123c; stroke-width: 1.5; }
+.tooth-state-crown { fill: #fde68a; stroke: #b45309; stroke-width: 1.5; }
+.tooth-state-implant { fill: #c4b5fd; stroke: #5b21b6; stroke-width: 1.5; }
+.tooth-state-fractured { fill: #fca5a5; stroke: #991b1b; stroke-width: 1.5; }
+
+.tooth-label {
+  font-size: 10px;
+  text-anchor: middle;
+  fill: var(--color-text-secondary);
+}
+
+.tooth-detail-panel {
+  position: fixed;
+  right: 0;
+  top: 0;
+  height: 100vh;
+  width: 400px;
+  background: var(--color-surface);
+  box-shadow: var(--shadow-lg);
+  padding: var(--spacing-lg);
+  overflow-y: auto;
+  transform: translateX(100%);
+  transition: transform 0.2s;
+}
+
+.tooth-detail-panel.open { transform: translateX(0); }
+
+.event-timeline {
+  border-left: 2px solid var(--color-border);
+  padding-left: var(--spacing-md);
+  margin-top: var(--spacing-md);
+}
+
+.event-item {
+  padding: var(--spacing-sm) 0;
+  border-bottom: 1px solid var(--color-border);
+}
