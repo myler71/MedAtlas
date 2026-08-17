@@ -1,0 +1,14 @@
+node_modules/
+__pycache__/
+*.pyc
+.env
+*.db
+.pytest_cache/
+.coverage
+htmlcov/
+.superpowers/
+.opencode/skills/
+.DS_Store
+*.log
+dist/
+build/
