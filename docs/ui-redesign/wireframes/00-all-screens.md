@@ -2,27 +2,27 @@
 
 Covers the 7 mandated screens. These are layout/content-hierarchy wireframes, not visual design. Companion to `00`–`11`.
 
+> **Values are illustrative.** Names, phones, dates, and event rows beyond the seed set are layout examples only. The only guaranteed demo data is the seed set in `00-current-state-audit.md` §Seeded synthetic data: **Dr. Sarah Chen** (dentist), **Dr. James Wilson** (orthopedist), **John Smith** (1984-03-15 · 555-0201), **Maria Garcia** (1992-07-22 · 555-0202). No admin login exists in the seed.
+
 ---
 
 ## 1. Global shell + Dashboard
 
 ```
 ┌──────────────────────────────────────────────────────────────────────┐
-│ ☰ ClinicCare          ⌕ Global patient search    Dr. Aisha Rahman ▾  │  <- topbar
+│ ☰ ClinicCare          ⌕ Global patient search     Dr. Sarah Chen ▾   │  <- topbar
 │   [Dashboard] [Patients] [Drug Checker]            [dentist] [Sign out]
 ├──────────────────────────────────────────────────────────────────────┤
-│  Today's schedule (Mon 19 Aug)                        Quick actions   │
-│  ┌────────────────────────────────────────────────────────────────┐  │
-│  │ ⬤ 09:00  John Smith   — consult  (dental)      [Open]           │  │
-│  │ ⬤ 10:30  Maria Garcia — recall    (dental)      [Open]           │  │
-│  └────────────────────────────────────────────────────────────────┘  │
-│  Recent patients                          [View all →#/patients]     │
-│  ┌──────────┬──────────────┬───────────┬───────────────┐             │
-│  │ Name     │ DOB          │ Last visit│ Status        │             │
-│  ├──────────┼──────────────┼───────────┼───────────────┤             │
-│  │ John Smith │ 1978-04-12 │ Aug 12    │ ⚠ allergy pen │             │
-│  └──────────┴──────────────┴───────────┴───────────────┘             │
-│  Alerts (actionable):  ⚠ 2 patients due for follow-up review         │
+│  Recent patients                                  [View all →#/patients]│
+│  ┌──────────┬──────────────┬──────────────────────┐                   │
+│  │ Name     │ DOB          │ Status               │                   │
+│  ├──────────┼──────────────┼──────────────────────┤                   │
+│  │ John Smith │ 1984-03-15 │ ⚠ allergy: penicillin│                   │
+│  │ Maria Garcia│ 1992-07-22 │ —                    │                   │
+│  └──────────┴──────────────┴──────────────────────┘                   │
+│  Quick actions (role-aware)                                           │
+│  [ Patients → ]  [ Drug checker → ]    (dentist: dental chart)       │
+│  No "today's queue" panel in P0 — appointments are patient-scoped (P1).│
 └──────────────────────────────────────────────────────────────────────┘
 ```
 
@@ -36,8 +36,8 @@ Covers the 7 mandated screens. These are layout/content-hierarchy wireframes, no
 │ ┌──────────┬──────────────┬───────────┬─────────┬──────────────┐    │
 │ │ Name     │ DOB          │ Phone     │ Clinic  │ Warnings     │    │
 │ ├──────────┼──────────────┼───────────┼─────────┼──────────────┤    │
-│ │ Smith, John │ 1978-04-12 │ 555-0101  │ Demo    │ ⚠ penicillin│    │
-│ │ Smith, Ana  │ 1985-11-02 │ 555-0143  │ Demo    │ —            │    │
+│ │ Smith, John │ 1984-03-15 │ 555-0201  │ Demo    │ ⚠ penicillin│    │
+│ │ Garcia, Maria│ 1992-07-22│ 555-0202  │ Demo    │ —            │    │
 │ └──────────┴──────────────┴───────────┴─────────┴──────────────┘    │
 │ Keyboard: ↑/↓ select row · Enter open · rows focusable               │
 │ [ Empty state: "No patients match your search." ]                    │
@@ -48,19 +48,19 @@ Covers the 7 mandated screens. These are layout/content-hierarchy wireframes, no
 
 ```
 ┌──────────────────────────────────────────────────────────────────────┐
-│ ‹ Patients › Smith, John            M 42y  DOB 1978-04-12   #P-0001 │  <- patient context bar (persistent)
+│ ‹ Patients › Smith, John            M 42y  DOB 1984-03-15   #demo-01│ <- patient context bar (persistent)
 │  ⚠ ALLERGIC: penicillin (rash)      💊 warfarin · aspirin            │
 ├──────────────────────────────────────────────────────────────────────┤
 │ Tabs: [ Overview | Dental | Skeleton | Medications | Appointments ]  │
 │ ┌ Summary       ┌ Medications           ┌ Allergies / History        │
 │ │ Last visit    │ warfarin 5mg — active │ Allergies: penicillin      │
-│ │ Next appt     │ aspirin 81mg — active │ Conditions: hypertension   │
+│ │ (from events) │ aspirin 81mg — active │ Conditions: (patient record)│
 │ │ Recent events │                       │                            │
 │ └───────────────┴───────────────────────┴────────────────────────────┘
 │ Quick actions: [ Dental chart → ] [ Skeleton chart → ] [ Assistant → ]│
 │ Recent events (timeline)                                             │
-│  • 12 Aug   Tooth 16 — restoration (Dr. Rahman)                     │
-│  • 02 Aug   Region: femur, right — fracture           [ See all ]    │
+│  • 12 Aug   Tooth 16 — restoration (Dr. Chen)                       │
+│  • 02 Aug   Region: femur, right — fracture (Dr. Wilson)            │
 └──────────────────────────────────────────────────────────────────────┘
 ```
 
@@ -78,8 +78,8 @@ Covers the 7 mandated screens. These are layout/content-hierarchy wireframes, no
 │  ▧ crown    ▨ implant ▨ fracture  ▨ treated                         │
 ├──────────────────────────────────────────────────────────────────────┤
 │ ┌ DRAWER: Tooth 16 (FDI) — upper left, state: caries ───────────────┐│
-│ │ Surface: mesial  Event: caries  Date: 2026-08-19                  ││
-│ │ History:  12 Aug  restoration                                      ││
+│ │ Surface: mesial  Event: caries  Date: (today)                     ││
+│ │ History:  12 Aug  restoration  (dates illustrative)               ││
 │ │ [ Add event: type ▾ surface ▾  date ░    ]  [Save] [Cancel]       ││
 │ └────────────────────────────────────────────────────────────────────┘│
 │ List alternative: Quadrant 1 › Tooth 16 › caries  (region list for SR)│
@@ -102,8 +102,8 @@ Covers the 7 mandated screens. These are layout/content-hierarchy wireframes, no
 │ Region list: ► Right femur — fracture                                │
 ├──────────────────────────────────────────────────────────────────────┤
 │ ┌ DRAWER: Right femur — state: fracture ────────────────────────────┐│
-│ │ Bone: femur (right)  Finding: fracture  Date: 2026-08-02         ││
-│ │ History: 02 Aug fracture (confirmed)                              ││
+│ │ Bone: femur (right)  Finding: fracture  Date: (today)            ││
+│ │ History: 02 Aug fracture (confirmed)  (dates illustrative)        ││
 │ │ [ Add event: type ▾ bone ▾ date ░ ]        [Save] [Cancel]       ││
 │ └────────────────────────────────────────────────────────────────────┘│
 └──────────────────────────────────────────────────────────────────────┘
@@ -119,7 +119,7 @@ Covers the 7 mandated screens. These are layout/content-hierarchy wireframes, no
 │ [ Check interactions ]                                              │
 │ ┌───────────────────────────────────────────────────────────────────┐│
 │ │ ⚠ MAJOR — warfarin + aspirin                                     ││
-│ │ Severity: Major     Clinical significance: .....                  ││
+│ │ Severity: Major     Clinical significance: .....                 ││
 │ │ Mechanism: additive antiplatelet/anticoagulant effect             ││
 │ │ Source: preseeded interaction dataset   Evidence: level X        ││
 │ │ "This is not a clinical recommendation."                         ││
@@ -140,7 +140,7 @@ Covers the 7 mandated screens. These are layout/content-hierarchy wireframes, no
 │ ║ DECISION SUPPORT ONLY — not a substitute for clinical judgment.    ║│
 │ ║ Based on the local patient record and, where noted, web sources.   ║│
 │ ╚═══════════════════════════════════════════════════════════════════╝│
-│ Starter questions:  [Summarize dental history] [Check meds w/ IBS]   │
+│ Starter questions:  [Summarize dental history] [Check meds]          │
 │ ┌───────────────────────────────────────────────────────────────────┐│
 │ │ Q: Does warfarin interact with aspirin?                          ││
 │ │ A: The record shows both are active. Seeded interaction data       ││

@@ -16,6 +16,8 @@
 | D10 | Assistant flagged as decision-support with persistent banner; rule-based (no LLM) is the honest truth | Clinical-safety gate | `05` |
 | D11 | Demo role selector (client-side) labeled demo-only; real auth server-driven | Never treat client role selection as authorization | `02`, `04` |
 | D12 | Light theme baseline; dark mode optional/non-blocking | Master prompt §7 | `03` |
+| D13 | **Demo-data seed as P0** — new `database/seeds/demo_clinical.sql` (allergies/meds/history/chart events/patient↔drug for the two seeded patients), mounted in compose initdb (T-1.5) | Cold-start golden path is infeasible today (`seed.sql` seeds no clinical content); counted inside the "3 backend workstreams" rule so the bounded-change principle holds | `00`, `05` |
+| D14 | Demo script is the **contract** the demo-data seed must mirror — no manual DB edits to show data | Prevents seed↔script drift; acceptance criteria 16/18 (07) | `10` |
 
 ## Assumptions
 
@@ -28,9 +30,10 @@
 
 ## Open questions
 
-1. Are the seeded demo emails/roles (`dentist@clinic.com`, `orthopedist@clinic.com`, `admin@clinic.com` — confirm from `seed.sql`) the intended demo credentials? (Default assumption: yes, password `password123`.)
+1. Demo credentials: `seed.sql` seeds `dentist@clinic.com` (Dr. Sarah Chen, dentist) and `ortho@clinic.com` (Dr. James Wilson, orthopedist) — **no admin user is seeded**. Default password assumed `password123` (placeholder hashes regenerated in T-1.1). Admin persona/seed deferred to P1, documented so the demo never presents a fake admin.
 2. Should the access-token expiry be raised via env for demo recordings? (P1; default unchanged 15m.)
 3. Is Playwright available for a golden-path E2E, or do we rely on the documented manual walkthrough? (Probed at implementation start.)
+4. Should the demo-data seed create chart rows directly (`INSERT INTO dental_charts/teeth`) or via a one-time API walk? (T-1.5 decision — default: direct INSERTs matching `002_dental.sql` + `003_orthopedic.sql` schemas, since the API route auto-creates teeth but as a separate concern; resolved at M1.)
 
 ## Deferred (with rationale)
 

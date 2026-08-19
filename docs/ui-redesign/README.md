@@ -20,6 +20,7 @@ Planning artifacts for the Clinical Care Workspace UI/UX MVP. Produced during th
 | 09 | [`09-architecture-extension-guide.md`](09-architecture-extension-guide.md) | How to add a module, role, route, API integration, design-system component, or nav entry without rework |
 | 10 | [`10-demo-script.md`](10-demo-script.md) | Timed 5–10 minute golden-path presentation using synthetic data |
 | 11 | [`11-quality-gate-scorecard.md`](11-quality-gate-scorecard.md) | Product/UX/UI/engineering/a11y/responsive/reliability/clinical-safety/demo gates with evidence rules |
+| v | [`verification.md`](verification.md) | Per-gate evidence record (commands, outputs/SHA, screenshots, sign-off) populated during M1–M6 |
 
 Wireframes: [`wireframes/00-all-screens.md`](wireframes/00-all-screens.md) — low-fidelity textual wireframes for the global shell/dashboard, patient list, patient overview, dental workspace, orthopedic workspace, medication interaction checker, and patient assistant.
 

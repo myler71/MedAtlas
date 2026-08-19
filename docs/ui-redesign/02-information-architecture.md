@@ -14,7 +14,11 @@
 | `#/drug-checker` | auth | Drug interaction checker |
 | `#/appointments` | auth (P1) | Appointments |
 
-**Role-gating is demo-accurate:** names the capabilities the backend actually scopes. Real authorization stays server-driven (header-based clinic/role); client-side guards are UX only.
+**Role-gating is demo-accurate:** names the capabilities the backend actually scopes. Real authorization stays server-driven (header-based clinic/role); client-side guards are UX only. Role capability map: `01-product-brief.md` §Role capability map. Admin is in the schema but **not seeded** (P1) — no fake admin login in the demo.
+
+## Wireframe values are illustrative
+
+Screen values in `wireframes/00-all-screens.md` (names, phonetimes, dates beyond the two seeded patients) are layout examples, not data promises. The only guaranteed demo data is the seed set verified in `00-current-state-audit.md` §Seeded synthetic data.
 
 ## Global shell
 
@@ -22,13 +26,13 @@ Persistent: brand + clinic identity, primary nav (dashboard, patients, drug chec
 
 ## Patient workspace
 
-One stable patient context across tabs: **Overview · Dental chart · Orthopedic chart · Medications/Allergies/History · Appointments · Assistant**. `patientId` lives in the URL hash so deep links, back/forward, and fresh tabs preserve context. No duplicated patient data across pages — the shell's patient header is the single source of identity.
+One stable patient context across tabs: **Overview · Dental chart · Orthopedic chart · Medications/Allergies/History · Appointments (P1) · Assistant**. `patientId` lives in the URL hash so deep links, back/forward, and fresh tabs preserve context. No duplicated patient data across pages — the shell's patient header is the single source of identity.
 
 ## Key user flows
 
 ### Golden path (P0)
 1. Guest → login (`demo-role` selector labeled demo-only; server enforces real auth) → dashboard.
-2. Dashboard: today's appointments/queue + recent patients + role-aware shortcuts (live from `GET /api/patients`, appointments by patient).
+2. Dashboard: recent patients (live `GET /api/patients`) + role-aware shortcuts + actionable alerts only where data supports them. **No "today's queue" panel in P0** — no aggregate schedule API exists (appointments are patient-scoped); that panel is P1 with the appointments UI.
 3. Global/patient search → patient list → open patient.
 4. Patient overview: summary cards + meds/allergies/history + recent events + entry buttons to charts/assistant.
 5. Dental chart: tooth states from `GET .../dental-chart`; click/tab a tooth → drawer with state + history + Add Event (POST). Legend always visible.
@@ -41,7 +45,7 @@ Every flow documents: entry point, screens, primary/secondary action, data + sou
 
 ## Screen-by-screen content hierarchy
 
-**Dashboard** — Today (work queue/appointments) · Recent patients · Alerts (actionable only) · Role shortcuts. No decorative stats.
+**Dashboard** — Recent patients (from `GET /api/patients`) · Role-aware shortcuts · Alerts (actionable only, if derivable) · Quick actions. No decorative stats; **no invented today-queue panel** (P1, see above).
 **Patient list** — Search (debounced, server-side `?search=`), filter/sort, keyboard rows, pagination or incremental loading as supported.
 **Patient overview** — Identity + warnings (banner) · Meds · Allergies · Medical history · Recent events · Quick actions.
 **Dental workspace** — Chart (primary) · Legend (never color-only) · List alternative · Details drawer (state + history + event entry).

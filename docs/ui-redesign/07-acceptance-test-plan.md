@@ -11,21 +11,24 @@
 | A11y | keyboard + SR manual walkthrough + axe | WCAG 2.2 AA on P0 journeys |
 | Failure modes | curl/DevTools | loading/empty/error/unauthorized/forbidden/not-found/degraded-external-service |
 
-## User-journey acceptance scenarios (map to README acceptance criteria §11)
+## User-journey acceptance scenarios (map to the master prompt's §11 acceptance criteria)
 
 1. **Cold start** — `docker compose down -v && up --build` → documented credentials → login (crit. 1, 3, 18).
 2. **No console errors** — P0 journeys open in clean DevTools (crit. 2).
 3. **Patient discovery** — search "john" → John Smith → open → context banner visible (crit. 3, 4).
 4. **Dental event** — select tooth → understand state → review events → record one event → state updates in place (crit. 4).
 5. **Orthopedic event** — select region/bone → understand state → review events → record one event (crit. 5).
-6. **Interaction check** — warfarin + aspirin → major interaction w/ severity+source+evidence; a pair with no record → explicit caveat, never "safe" (crit. 6).
-7. **Assistant** — question → answer separated from citations/evidence/missing-info/safety (crit. 7; clinical-safety gate).
+6. **Interaction check** — warfarin + aspirin → major interaction w/ severity+source+evidence (data from `demo_clinical.sql` patient↔drug assignments, T-1.5); a pair with no record → explicit caveat, never "safe" (crit. 6).
+7. **Assistant** — question → answer separated from citations/evidence/missing-info/safety (data source: seeded record + preseeded interactions; Tavily may be down → degraded state) (crit. 7; clinical-safety gate).
 8. **Keyboard E2E** — login → search → open patient → both charts → drug check → assistant, all with Tab/Enter/Space; focus visible; dialogs trap/restore (crit. 8, 9).
 9. **Contrast/non-color** — text/UI AA; states identifiable without color (crit. 10).
 10. **Responsive** — 1280 + 820 usable; complex charts/ tables have documented alternatives (crit. 11).
 11. **State coverage** — each P0 screen: loading, empty, validation, error, unauthorized, forbidden, not-found, service-down (crit. 12).
 12. **Fresh-checkout fidelity** — docs + demo script reproducible; no manual DB edits (crit. 18); `09-architecture-extension-guide.md` matches implementation (crit. 19); reviewer-independent demo (crit. 20).
 13. **Data hygiene** — no real PHI or secrets committed anywhere (crit. 14); new deps/creds/limitations documented (crit. 15); backend contracts unchanged (crit. 16); evidence recorded for completion claims (crit. 17).
+14. **Role-matrix write-auth** — dentist can open dental chart + record tooth events, but is blocked (nav hidden + route guard 403 message) from skeleton chart; orthopedist is the inverse; admin sees both. ⚠ Client guards are **UX-only** — server-side `requireRole`/`patient_access` wire-up is P2 and documented as a known limitation; this scenario evidences the UX behavior, not server enforcement (crit. 10, 16, 17).
+15. **Seeded credentials** — `dentist@clinic.com` and `ortho@clinic.com` log in with `password123` from a cold stack in M1 (no admin user is seeded; admin persona deferred to P1).
+16. **Demo-data seed** — cold stack after M1 has John's penicillin allergy, active warfarin+aspirin, seeded chart events, and a medical-history entry (from `demo_clinical.sql`, T-1.5); every data-bearing step in `10-demo-script.md` succeeds without manual DB edits (crit. 18).
 
 ## Accessibility checks (each P0 screen)
 

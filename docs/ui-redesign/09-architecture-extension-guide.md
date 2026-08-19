@@ -19,7 +19,7 @@ How to grow the platform without rework. **Current extension seams (verifiable n
 
 ## Add a route
 
-- Add hash route to `js/router.js` with `{path, page, guard}` semantics. Deep pages take `:params`. Focus management: route change focuses `#main`; keep breadcrumbs consistent (patient context bar helper in `shell.js`).
+- Add hash route to `js/router.js` with `{path, page, guard}` semantics. Deep pages take `:params`. Focus management: route change focuses `<main id="view">` (the single mount ID used across `04` and `shell.js`); keep breadcrumbs consistent (patient context bar helper in `shell.js`).
 
 ## Add design-system tokens/components
 

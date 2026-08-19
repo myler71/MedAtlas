@@ -23,7 +23,7 @@
 | Orthopedic | GET `/api/patients/{id}/skeleton`; bone events GET/POST/PUT | `backend/fastapi/app/api/orthopedic.py` |
 | History | medical histories / allergies / medications CRUD | `backend/fastapi/app/api/patient_history.py` |
 | Appointments | CRUD under `/api/patients/{id}/appointments` | `backend/fastapi/app/api/appointments.py` |
-| Drugs | POST `/drugs/resolve`, GET `/drugs/search`, POST `/drug-interactions/check` | `backend/fastapi/app/api/drugs.py`, `interactions.py` |
+| Drugs | POST `/api/drugs/resolve`, GET `/api/drugs/search`, POST `/api/drug-interactions/check` | `backend/fastapi/app/api/drugs.py` (router prefix `/api`); logic in `backend/fastapi/app/services/drugs/interactions.py` |
 | Assistant | POST `/api/chat/patient` (citations + missing_information in response) | `backend/fastapi/app/api/chat.py` |
 
 ## Frontend inventory (verified)
@@ -48,6 +48,25 @@
 
 Every frontend-referenced endpoint exists in FastAPI. Frontend references: dental chart GET (`odontogram.js:26`), skeleton GET (`skeleton-svg.js:25`), login/register (`auth.js:44`), tooth events GET/POST (`dental-chart.js:43,90`), bone events GET/POST (`skeleton.js:42,101`), chat (`ai-assistant.js:114`), interaction check (`drug-checker.js:73`), overview/allergies/meds/medical-history (`patient-overview.js:48,55-57`). **No frontend references to appointments or patient-list/search endpoints** → those are net-new UI against existing APIs.
 
+## Seeded synthetic data (current seed)
+
+Verified from `database/seed.sql` and `database/seeds/drug_interactions.sql`:
+
+| Entity | Seed value | Notes |
+|---|---|---|
+| Clinic | `a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11` | single synthetic demo clinic |
+| User — dentist | `b0eebc99-9c0b-4ef8-bb6d-6bb9bd380a22` · `dentist@clinic.com` · Dr. Sarah Chen | password hash is a **literal placeholder** → cannot log in until T-1.1 |
+| User — orthopedist | `c0eebc99-9c0b-4ef8-bb6d-6bb9bd380a33` · `ortho@clinic.com` · Dr. James Wilson | same placeholder caveat |
+| Admin user | **none seeded** | admin role exists in schema only; admin persona/seed deferred to P1 |
+| Patient 1 | `d0eebc99-9c0b-4ef8-bb6d-6bb9bd380a44` · John Smith · 1984-03-15 · male · 555-0201 | full `patient_access` for dentist + orthopedist |
+| Patient 2 | `e0eebc99-9c0b-4ef8-bb6d-6bb9bd380a55` · Maria Garcia · 1992-07-22 · female · 555-0202 | dentist-only `patient_access` |
+| Password hashes | literal `PLACEHOLDER_HASH_REGENERATED_AT_SEED_TIME` | `database/seed.sh` regenerates real hashes but **compose never invokes it** → demo blocker #2 (below), target of T-1.1 |
+| Drug data | 10 drug concepts · 8 interaction pairs | `database/seeds/drug_interactions.sql` (preseeded lookup only — no live resolve; applies to blocker #2 too) |
+
+**⚠ Critical: no clinical demo content is seeded.** `seed.sql` contains **only** clinic, 2 users, 2 patients, 3 `patient_access` rows. Migrations 002–006 are `CREATE TABLE` only (empty tables). There are **no allergies, no medications, no medical-history rows, no chart events, no patient↔drug assignments** on a cold stack. Every demo promise that needs them (John Smith's penicillin allergy, active warfarin+aspirin, prior chart events, assistant INR context) is **unsatisfiable after `docker compose up` today** — the demo-data seed is P0 work (T-1.5) and must be created as part of the one-command seeded stack.
+
+All demo data is clearly synthetic; no real PHI. Used by `10-demo-script.md` (real seeded personas, not invented ones).
+
 ## Reusable assets
 
 - Both SVG chart components — clean class APIs, stable constructors (`container, patientId, onSelect*`)
@@ -59,8 +78,9 @@ Every frontend-referenced endpoint exists in FastAPI. Frontend references: denta
 
 | Severity | Finding | Evidence |
 |---|---|---|
-| 🔴 Demo blocker | `docker compose up` initializes **only** `schema.sql`; migrations 002–006, `seed.sql`, and `seeds/drug_interactions.sql` are never applied → domain tables/data missing | `docker-compose.yml` postgres init |
-| 🔴 Demo blocker | `seed.sql` password hashes are literal placeholders → seeded users cannot log in | `database/seed.sql:7-10` |
+| 🔴 Demo blocker | `docker compose up` initializes **only** `schema.sql`; migrations 002–006, `seed.sql`, and `seeds/drug_interactions.sql` are never applied → domain tables/data missing | `docker-compose.yml` postgres init (mounts only `01-schema.sql`) |
+| 🔴 Demo blocker | `seed.sql` password hashes are literal placeholders → seeded users cannot log in | `database/seed.sql:8-11` |
+| 🔴 Demo blocker | **No clinical demo content exists in any seed** — allergies, medications, medical history, chart events, patient↔drug assignments are empty on a cold stack → bounded set of demo scenarios (penicillin allergy, warfarin+aspirin pair, chart events, assistant context) cannot be shown | `database/seed.sql`, `database/migrations/002–006.sql` (table-only) |
 | 🔴 Dead end | After login, dashboard cards are static → no way to reach any clinical page | `dashboard.js`, no instantiations |
 | 🔴 Broken styling | `dental.css` + `skeleton.css` not linked | `index.html:6-9` |
 | 🟠 Unverified security | FastAPI trusts `x-user-id/x-user-role/x-clinic-id` headers only — safe only if FastAPI is not directly reachable | `backend/fastapi/app/auth_context.py` |

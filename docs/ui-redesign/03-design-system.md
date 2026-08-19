@@ -15,7 +15,7 @@ Structure follows the existing `css/variables.css` (extend it; keep the current 
 - **Spacing/radius/border/elevation:** 4px spacing scale, 4/6/8px radii, 1px borders, low-elevation shadows for drawers/toasts.
 - **Motion:** ≤200ms, `prefers-reduced-motion` honored.
 - **Focus:** global visible focus ring token (`:focus-visible`) on every interactive element.
-- **Layout:** shell grid — top nav bar + content; patient context bar; document tested widths 1280/820/390.
+- **Layout:** shell grid — top nav bar + content; patient context bar; document tested widths **1280 + 820 (P0 floor), 390 (P1)**; sub-390px is a non-goal.
 
 ## Component inventory (frozen for MVP)
 

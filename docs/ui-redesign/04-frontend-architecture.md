@@ -62,10 +62,26 @@ frontend/
       appointments.js         NEW  P1/stretch: list + book form (backend CRUD exists)
 ```
 
+## Patient-context API integration (scan head → data)
+
+The doctor's scan head = identity + allergies + active meds + high-priority warnings, pinned while inside a patient workspace (`#/patients/:id*`).
+
+| Data | Endpoint (verified in `00`) | Refresh trigger | Failure mode |
+|---|---|---|---|
+| Identity (name, DOB, phone) | `GET /api/patients/:id` | route enter | skeleton header; degraded (identity-only) on partial failure |
+| Allergies | `GET /api/patients/:id/allergies` (`patient_history.py`) | route enter + after med/allergy edit (P1) | banner shows "—"; never silently empty |
+| Active meds | `GET /api/patients/:id/medications` (`patient_history.py`) | route enter + after med/allergy edit (P1) | banner shows "—" |
+| Medical history | `GET /api/patients/:id/medical-history` (`patient_history.py`) | route enter | overview section only |
+| Recent events (activity trail) | `GET .../dental-chart`, `.../skeleton` events | route enter; POST event → refetch that chart + refresh header | timeline shows empty state |
+| Appointments (P1) | `GET /api/patients/:id/appointments` | route enter | P1 |
+
+Verified exact paths (router prefix `/api/patients/{patient_id}` in `backend/fastapi/app/api/patient_history.py`): `GET /api/patients/{id}/medical-history`, `GET /api/patients/{id}/allergies`, `GET /api/patients/{id}/medications`. There is **no aggregate "today's schedule" endpoint** — the dashboard must not request one (P1 appointments UI only).
+
 ## Key decisions
 
 - **Routing:** hash router (`#/`), flat route table, role guards. Zero backend change (SPA fallback already in `server.js`).
 - **Patient context:** `patientId` in the URL hash — deep links, back/forward, fresh tabs all work; no cross-tab state sync problem. Optional in-memory TTL cache (P1).
+- **Patient header data flow (P0):** single load per patient visit — `GET /api/patients/:id` (identity) + `GET /api/patients/:id/medications`, `/allergies`, `/medical-history` (**confirm exact patient_history endpoint shapes in `00`/M2 against `patient_history.py`**) → header renders identity + allergies + active meds + warnings. Refresh + invalidation: refetch on `#/patients/:id*` route change; POSTing a new dental/ortho event triggers a header warnings refresh (allergy/med data doesn't change on events, so a localized refresh suffices). Loading/error: skeleton header while fetching; degraded header (identity only) on partial failure with retry.
 - **Session/state:** module-scope session store over localStorage; no state library (YAGNI at this size).
 - **API client:** single choke point for 401 → redirect to login with toast; normalized `ApiError`; base URL from `location.origin`.
 - **SVG a11y:** native `<button>` wrapping for teeth (free Tab/Enter/Space/focus ring), `role="button" tabindex="0"` + Enter/Space for region paths; always-on text list alternative.
