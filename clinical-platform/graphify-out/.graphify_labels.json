@@ -1,0 +1,23 @@
+{
+  "0": "drugs.py",
+  "1": "apiCall",
+  "2": "TavilyClient",
+  "3": "dependencies",
+  "4": "dental.py",
+  "5": "UserContext",
+  "6": "RxNormProvider",
+  "7": "orthopedic.py",
+  "8": "patients.py",
+  "9": "server.js",
+  "10": "DrugCheckerPage",
+  "11": "AIAssistantPage",
+  "12": "rbac.js",
+  "13": "seed.sh",
+  "14": "README.md",
+  "15": "test-auth-patient.sh",
+  "16": "app/__init__.py",
+  "17": "models/__init__.py",
+  "18": "schemas/__init__.py",
+  "19": "dental/__init__.py",
+  "20": "services/__init__.py"
+}

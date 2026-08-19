@@ -1,0 +1,338 @@
+{
+  "backend/express/package.json": {
+    "mtime": 1786964146.4201832,
+    "seen": 1786967773.6152153,
+    "ast_hash": "a07374e11df28b3bcbcc164afab7a454",
+    "semantic_hash": ""
+  },
+  "backend/express/src/middleware/audit.js": {
+    "mtime": 1786964146.422886,
+    "seen": 1786967773.6152153,
+    "ast_hash": "1aed721f63c680ff658d3e14587b8880",
+    "semantic_hash": ""
+  },
+  "backend/express/src/middleware/auth.js": {
+    "mtime": 1786964146.421663,
+    "seen": 1786967773.6152153,
+    "ast_hash": "d53c6eacbd73205f3954ea59a83a3168",
+    "semantic_hash": ""
+  },
+  "backend/express/src/middleware/errorHandler.js": {
+    "mtime": 1786964146.422886,
+    "seen": 1786967773.6152153,
+    "ast_hash": "df8e8bef029e254ea20c0bb36648aac4",
+    "semantic_hash": ""
+  },
+  "backend/express/src/middleware/rbac.js": {
+    "mtime": 1786964146.421663,
+    "seen": 1786967773.6152153,
+    "ast_hash": "e3aa80f503c6b88c7bc27ef65947d6cb",
+    "semantic_hash": ""
+  },
+  "backend/express/src/routes/auth.js": {
+    "mtime": 1786964146.4250746,
+    "seen": 1786967773.6152153,
+    "ast_hash": "7db985dde866fb1915e5456e5eb0d643",
+    "semantic_hash": ""
+  },
+  "backend/express/src/routes/proxy.js": {
+    "mtime": 1786964146.4246204,
+    "seen": 1786967773.6152153,
+    "ast_hash": "516d5f0718c3e776738eab759207cddf",
+    "semantic_hash": ""
+  },
+  "backend/express/src/server.js": {
+    "mtime": 1786964146.4201832,
+    "seen": 1786967773.6152153,
+    "ast_hash": "86d87a417de124a8e9379154449831fa",
+    "semantic_hash": ""
+  },
+  "backend/express/src/services/db.js": {
+    "mtime": 1786964146.422886,
+    "seen": 1786967773.6152153,
+    "ast_hash": "82e91306caceb2288cce18a70e988c5d",
+    "semantic_hash": ""
+  },
+  "backend/fastapi/app/__init__.py": {
+    "mtime": 1786964006.2462306,
+    "seen": 1786967773.6152153,
+    "ast_hash": "68b329da9893e34099c7d8ad5cb9c940",
+    "semantic_hash": ""
+  },
+  "backend/fastapi/app/ai/__init__.py": {
+    "mtime": 1786964859.9864006,
+    "seen": 1786967773.6152153,
+    "ast_hash": "0e914d3eb061525fdd17f8829718c52b",
+    "semantic_hash": ""
+  },
+  "backend/fastapi/app/ai/patient_assistant.py": {
+    "mtime": 1786964859.9864006,
+    "seen": 1786967773.6152153,
+    "ast_hash": "884674456506cd4f7af476df56ba5757",
+    "semantic_hash": ""
+  },
+  "backend/fastapi/app/api/__init__.py": {
+    "mtime": 1786964006.2472353,
+    "seen": 1786967773.6152153,
+    "ast_hash": "68b329da9893e34099c7d8ad5cb9c940",
+    "semantic_hash": ""
+  },
+  "backend/fastapi/app/api/appointments.py": {
+    "mtime": 1786964606.4580405,
+    "seen": 1786967773.6152153,
+    "ast_hash": "073ebf836344e7b0ad28ce6fb2bcb27c",
+    "semantic_hash": ""
+  },
+  "backend/fastapi/app/api/chat.py": {
+    "mtime": 1786964840.0268068,
+    "seen": 1786967773.6152153,
+    "ast_hash": "4ddd23eb7440da4a834a3e052f224d48",
+    "semantic_hash": ""
+  },
+  "backend/fastapi/app/api/dental.py": {
+    "mtime": 1786964431.9193928,
+    "seen": 1786967773.6152153,
+    "ast_hash": "71d43c5d5af4938f84df24ed01c825bc",
+    "semantic_hash": ""
+  },
+  "backend/fastapi/app/api/drugs.py": {
+    "mtime": 1786964760.8291285,
+    "seen": 1786967773.6152153,
+    "ast_hash": "85587b2abc3922729d84a6fbe69753e2",
+    "semantic_hash": ""
+  },
+  "backend/fastapi/app/api/orthopedic.py": {
+    "mtime": 1786964442.9822032,
+    "seen": 1786967773.6152153,
+    "ast_hash": "4a9dc7b7c8909e25dfbdad3c1d79542e",
+    "semantic_hash": ""
+  },
+  "backend/fastapi/app/api/patient_history.py": {
+    "mtime": 1786964567.633095,
+    "seen": 1786967773.6152153,
+    "ast_hash": "ef8c59c5181bfcbd70f8c240bcc299ac",
+    "semantic_hash": ""
+  },
+  "backend/fastapi/app/api/patient_overview.py": {
+    "mtime": 1786964592.4228127,
+    "seen": 1786967773.6152153,
+    "ast_hash": "fa205d3e6072b098de24330929828b03",
+    "semantic_hash": ""
+  },
+  "backend/fastapi/app/api/patients.py": {
+    "mtime": 1786963976.112453,
+    "seen": 1786967773.6152153,
+    "ast_hash": "df41ba8e3f0bcddcd52cdf4abf4f718d",
+    "semantic_hash": ""
+  },
+  "backend/fastapi/app/main.py": {
+    "mtime": 1786964889.0775845,
+    "seen": 1786967773.6152153,
+    "ast_hash": "4b9846395d4e7e621d273b0ad1565776",
+    "semantic_hash": ""
+  },
+  "backend/fastapi/app/models/__init__.py": {
+    "mtime": 1786964006.2482285,
+    "seen": 1786967773.6152153,
+    "ast_hash": "68b329da9893e34099c7d8ad5cb9c940",
+    "semantic_hash": ""
+  },
+  "backend/fastapi/app/models/database.py": {
+    "mtime": 1786963976.1298463,
+    "seen": 1786967773.6152153,
+    "ast_hash": "41b8366269d00f6fc3ff4184a0b00b7b",
+    "semantic_hash": ""
+  },
+  "backend/fastapi/app/rag/__init__.py": {
+    "mtime": 1786964758.769369,
+    "seen": 1786967773.6152153,
+    "ast_hash": "b05933aeb026e1dbbc1b39b1fd9fcd39",
+    "semantic_hash": ""
+  },
+  "backend/fastapi/app/rag/embeddings.py": {
+    "mtime": 1786964786.1235948,
+    "seen": 1786967773.6152153,
+    "ast_hash": "e0c9dddbc3e9f2fb0a0b76e73f13abc5",
+    "semantic_hash": ""
+  },
+  "backend/fastapi/app/rag/retrieval.py": {
+    "mtime": 1786964786.1235948,
+    "seen": 1786967773.6152153,
+    "ast_hash": "a1e85378cc633f051cec761b0d676319",
+    "semantic_hash": ""
+  },
+  "backend/fastapi/app/rag/tavily.py": {
+    "mtime": 1786964758.7743645,
+    "seen": 1786967773.6152153,
+    "ast_hash": "37ea15f30b2c31ada996b2e106fd0124",
+    "semantic_hash": ""
+  },
+  "backend/fastapi/app/schemas/__init__.py": {
+    "mtime": 1786964006.2482285,
+    "seen": 1786967773.6152153,
+    "ast_hash": "68b329da9893e34099c7d8ad5cb9c940",
+    "semantic_hash": ""
+  },
+  "backend/fastapi/app/schemas/patient.py": {
+    "mtime": 1786963976.1150534,
+    "seen": 1786967773.6152153,
+    "ast_hash": "b2d0981188602ac3c2ac1eba96113578",
+    "semantic_hash": ""
+  },
+  "backend/fastapi/app/services/__init__.py": {
+    "mtime": 1786964006.2482285,
+    "seen": 1786967773.6152153,
+    "ast_hash": "68b329da9893e34099c7d8ad5cb9c940",
+    "semantic_hash": ""
+  },
+  "backend/fastapi/app/services/auth_context.py": {
+    "mtime": 1786963976.1298463,
+    "seen": 1786967773.6152153,
+    "ast_hash": "5bf13c173325d8568061039b90693a26",
+    "semantic_hash": ""
+  },
+  "backend/fastapi/app/services/dental/__init__.py": {
+    "mtime": 1786964318.205519,
+    "seen": 1786967773.6152153,
+    "ast_hash": "caa96f3b87962a5d2625607bf5e0fd31",
+    "semantic_hash": ""
+  },
+  "backend/fastapi/app/services/dental/numbering.py": {
+    "mtime": 1786964340.936093,
+    "seen": 1786967773.6152153,
+    "ast_hash": "ec3f5352b9ee521e6ef446ccd631b97b",
+    "semantic_hash": ""
+  },
+  "backend/fastapi/app/services/drugs/__init__.py": {
+    "mtime": 1786964679.552378,
+    "seen": 1786967773.6152153,
+    "ast_hash": "dd327f621ba6632befd89d8ff5b26a22",
+    "semantic_hash": ""
+  },
+  "backend/fastapi/app/services/drugs/interactions.py": {
+    "mtime": 1786964688.9172544,
+    "seen": 1786967773.6152153,
+    "ast_hash": "bbe23bfa98fafb773a4e0ba78fa2955c",
+    "semantic_hash": ""
+  },
+  "backend/fastapi/app/services/drugs/provider.py": {
+    "mtime": 1786964679.549374,
+    "seen": 1786967773.6152153,
+    "ast_hash": "c9d59328538bb78fd9eda1cd641fded9",
+    "semantic_hash": ""
+  },
+  "backend/fastapi/app/services/drugs/rxnorm.py": {
+    "mtime": 1786964679.551376,
+    "seen": 1786967773.6152153,
+    "ast_hash": "68e0e1093ac5374e238e74eeb8f43bc3",
+    "semantic_hash": ""
+  },
+  "database/seed.sh": {
+    "mtime": 1786963996.082111,
+    "seen": 1786967773.6152153,
+    "ast_hash": "fcaee055cb36a35c9ec445857100ac8c",
+    "semantic_hash": ""
+  },
+  "frontend/js/api.js": {
+    "mtime": 1786963967.5802913,
+    "seen": 1786967773.6152153,
+    "ast_hash": "81be872a50548753cedf1638bfad90fe",
+    "semantic_hash": ""
+  },
+  "frontend/js/app.js": {
+    "mtime": 1786963967.5802913,
+    "seen": 1786967773.6152153,
+    "ast_hash": "be3b167c4be62cdcafeb2f16d684f7fd",
+    "semantic_hash": ""
+  },
+  "frontend/js/components/odontogram.js": {
+    "mtime": 1786964550.8943782,
+    "seen": 1786967773.6152153,
+    "ast_hash": "b171d852fa3d1af1a76d510c477b4517",
+    "semantic_hash": ""
+  },
+  "frontend/js/components/skeleton-svg.js": {
+    "mtime": 1786964544.6571646,
+    "seen": 1786967773.6152153,
+    "ast_hash": "b06c04ef79b70981cc788123904159f8",
+    "semantic_hash": ""
+  },
+  "frontend/js/pages/ai-assistant.js": {
+    "mtime": 1786964842.2555764,
+    "seen": 1786967773.6152153,
+    "ast_hash": "ba91be17b9298f2b7e4608ab5b3051a8",
+    "semantic_hash": ""
+  },
+  "frontend/js/pages/auth.js": {
+    "mtime": 1786963967.6085348,
+    "seen": 1786967773.6152153,
+    "ast_hash": "e33c01200cb6743c9722b22846fa4477",
+    "semantic_hash": ""
+  },
+  "frontend/js/pages/dashboard.js": {
+    "mtime": 1786963967.6085348,
+    "seen": 1786967773.6152153,
+    "ast_hash": "2de77daaa90e07db04238c3bc2334dde",
+    "semantic_hash": ""
+  },
+  "frontend/js/pages/dental-chart.js": {
+    "mtime": 1786964562.0300107,
+    "seen": 1786967773.6152153,
+    "ast_hash": "d086a95557f4e1c05a0749fd1b984394",
+    "semantic_hash": ""
+  },
+  "frontend/js/pages/drug-checker.js": {
+    "mtime": 1786964766.3915746,
+    "seen": 1786967773.6152153,
+    "ast_hash": "33e9ee5a51e01ab418c8eb0bcd36b465",
+    "semantic_hash": ""
+  },
+  "frontend/js/pages/patient-overview.js": {
+    "mtime": 1786964685.9630358,
+    "seen": 1786967773.6152153,
+    "ast_hash": "4ea445344e39934f2d5f6ade09859eff",
+    "semantic_hash": ""
+  },
+  "frontend/js/pages/role-selection.js": {
+    "mtime": 1786963967.585244,
+    "seen": 1786967773.6152153,
+    "ast_hash": "ad808ef6cdf99ee6ce736f829f9c47fa",
+    "semantic_hash": ""
+  },
+  "frontend/js/pages/skeleton.js": {
+    "mtime": 1786964544.6571646,
+    "seen": 1786967773.6152153,
+    "ast_hash": "ad0f4eb1c30729b0cb8f3d5f52e6c56a",
+    "semantic_hash": ""
+  },
+  "tests/test-auth-patient.sh": {
+    "mtime": 1786964194.267657,
+    "seen": 1786967773.6152153,
+    "ast_hash": "59025ad41afa95244641da4cc99ecc75",
+    "semantic_hash": ""
+  },
+  "README.md": {
+    "mtime": 1786963919.9273024,
+    "seen": 1786967773.6152153,
+    "ast_hash": "b04a6bd923d39205e683b6c1f23a2535",
+    "semantic_hash": ""
+  },
+  "backend/fastapi/requirements.txt": {
+    "mtime": 1786966933.1630068,
+    "seen": 1786967773.6152153,
+    "ast_hash": "c2baf0a4ccade9b126b5960347d15006",
+    "semantic_hash": ""
+  },
+  "docker-compose.yml": {
+    "mtime": 1786964187.225713,
+    "seen": 1786967773.6152153,
+    "ast_hash": "0a5bb196d3330b576ff582478377b511",
+    "semantic_hash": ""
+  },
+  "frontend/index.html": {
+    "mtime": 1786963967.5692234,
+    "seen": 1786967773.6152153,
+    "ast_hash": "76b50b432397d3a5e53a2e6f0f04cdfb",
+    "semantic_hash": ""
+  }
+}
