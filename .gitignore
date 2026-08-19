@@ -12,3 +12,4 @@ htmlcov/
 *.log
 dist/
 build/
+.claude/
